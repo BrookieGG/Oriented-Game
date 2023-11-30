@@ -4,6 +4,9 @@ float leftShipY;
 float rightShipX;
 float rightShipY;
 
+int leftScore = 0;
+int rightScore = 0;
+
 boolean leftShipUp = false;
 boolean leftShipDown = false;
 
@@ -36,6 +39,31 @@ void draw() {
 
  ellipse(leftShipX, leftShipY, 50, 50);
  ellipse(rightShipX, rightShipY, 50, 50);
+
+if (leftShipY <= 0) {
+leftScore++;
+resetLeftShip();
+}
+
+if (rightShipY <= 0) {
+rightScore++;
+resetRightShip();
+}
+
+//Score
+fill(255);
+textAlign(CENTER);
+textSize(20);
+text("Left Score: " + leftScore, width * 0.25, 20);
+text("Right Score: " + rightScore, width * 0.75, 20);
+}
+
+void resetLeftShip() {
+leftShipY = height - 25;
+}
+
+void resetRightShip() {
+rightShipY = height - 25;
 }
 
 void keyPressed() {
